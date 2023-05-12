@@ -1,0 +1,19 @@
+name: build
+
+on:
+  push:
+    branches: [ "master", "build" ]
+
+jobs:
+  build:
+    runs-on: macos-12
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+
+    - name: build
+      run: swift build -v
+
+    - name: tests
+      run: swift test -v
